@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WX Brands — Senior Brand Manager Study Guide</title>
+<style>
+  :root{
+    --bg:#f4f5f7; --card:#fff; --ink:#1a1d23; --muted:#6b7280; --line:#e5e7eb;
+    --accent:#0f6c5c; --accent-soft:#e6f4f1; --warn:#b45309; --warn-soft:#fef3c7;
+    --bad:#b91c1c; --bad-soft:#fee2e2; --good:#15803d; --good-soft:#dcfce7;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 18px 80px}
+  header{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px;margin-bottom:22px}
+  .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+  h1{font-size:1.85rem;line-height:1.25;margin-bottom:8px}
+  header p{color:var(--muted);font-size:.98rem}
+  .progress-wrap{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+  .bar{flex:1;height:8px;background:#eef0f3;border-radius:99px;overflow:hidden}
+  .bar>span{display:block;height:100%;background:var(--accent);border-radius:99px;width:0;transition:width .4s}
+  .pct{font-size:.85rem;color:var(--muted);white-space:nowrap;font-weight:600}
+  nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  nav a{background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;padding:7px 13px;border-radius:8px;font-size:.84rem;font-weight:500}
+  nav a:hover{border-color:var(--accent);color:var(--accent)}
+  h2{font-size:1.25rem;margin:34px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--accent-soft);color:var(--accent)}
+  h3{font-size:1.02rem;margin:22px 0 8px;color:#374151}
+  p,li{font-size:.96rem}
+  ul,ol{margin:8px 0 14px 20px}
+  li{margin-bottom:5px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:14px 0}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0}
+  .stat{background:var(--accent-soft);border-radius:8px;padding:12px;text-align:center}
+  .stat .num{font-size:1.45rem;font-weight:800;color:var(--accent)}
+  .stat .lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+  table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:.9rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.6px;font-size:.72rem}
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px;margin:16px 0}
+  .qcard .qnum{font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .qcard .qtext{font-size:1.05rem;font-weight:600;margin-bottom:14px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:#fafafa;transition:all .15s;font-size:.93rem}
+  .opt:hover{border-color:#9ca3af;background:#fff}
+  .opt input{margin-top:3px;accent-color:var(--accent)}
+  .opt.correct{border-color:var(--good);background:var(--good-soft)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+  .feedback{margin-top:12px;border-radius:8px;padding:12px 14px;font-size:.9rem;display:none}
+  .feedback.show{display:block}
+  .feedback.good{background:var(--good-soft);color:var(--good);border:1px solid #bbf7d0}
+  .feedback.bad{background:var(--bad-soft);color:var(--bad);border:1px solid #fecaca}
+  .why{margin-top:10px;border:1px dashed var(--line);border-radius:8px;overflow:hidden}
+  .why summary{cursor:pointer;padding:10px 14px;font-size:.85rem;font-weight:600;color:var(--warn);background:var(--warn-soft);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .why summary::-webkit-details-marker{display:none}
+  .why summary::after{content:'\u25bc';font-size:.65rem;transition:transform .2s}
+  .why[open] summary::after{transform:rotate(180deg)}
+  .why .body{padding:12px 14px;font-size:.88rem;color:#4b5563;background:#fff;border-top:1px dashed var(--line)}
+  .btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:.9rem;font-weight:600;cursor:pointer;margin-top:12px}
+  .btn:hover{opacity:.9}
+  .btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+  .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
+  .res{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;text-decoration:none;color:inherit;display:block;transition:border-color .15s,box-shadow .15s}
+  .res:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+  .res .src{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:4px}
+  .res .title{font-size:.95rem;font-weight:600;margin-bottom:4px}
+  .res .desc{font-size:.84rem;color:var(--muted)}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+  @media(max-width:600px){h1{font-size:1.5rem}.wrap{padding:18px 12px 60px}.stat-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Interview Prep · Senior Brand Manager · WX Brands, Novato CA</div>
+  <h1>WX Brands Study Guide</h1>
+  <p>Market research, funding history, industry and company challenges, solution talking points, practice questions, and real interview stories — built for the $130–$180K on-site role.</p>
+</header>
+
+<div class="progress-wrap">
+  <div class="bar"><span id="bar"></span></div>
+  <div class="pct" id="pct">0 of 12 answered</div>
+</div>
+
+<nav>
+  <a href="#money">1. Money</a>
+  <a href="#funding">2. Funding</a>
+  <a href="#industry">3. Industry</a>
+  <a href="#company">4. Company problems</a>
+  <a href="#solutions">5. Solutions</a>
+  <a href="#quiz">6. Quiz</a>
+  <a href="#resources">7. Interview stories</a>
+</nav>
+
+<h2 id="money">1. Where WX Gets Its Money</h2>
+<div class="stat-grid">
+  <div class="stat"><div class="num">~4M</div><div class="lbl">Cases / year</div></div>
+  <div class="stat"><div class="num">20</div><div class="lbl">Countries sold in</div></div>
+  <div class="stat"><div class="num">14</div><div class="lbl">Source countries</div></div>
+  <div class="stat"><div class="num">#13</div><div class="lbl">US wine supplier rank</div></div>
+  <div class="stat"><div class="num">#2</div><div class="lbl">Fastest-growing top-20 US wine co.</div></div>
+  <div class="stat"><div class="num">880K</div><div class="lbl">Bread &amp; Butter cases (2020)</div></div>
+</div>
+<p>WX Brands (founded 1999 by Peter Byck as Winery Exchange) earns through three engines:</p>
+<ul>
+  <li><strong>Owned national brands</strong> — Bread &amp; Butter (the crown jewel: super-premium, "not overthinking it," aimed at Millennials/Gen Z; ~880K cases in 2020 on 88% growth), plus Jelly Jar, Double Lariat, Chronic Cellars, Colorblock, Criterion.</li>
+  <li><strong>Exclusive / private-label brands for retailers</strong> — roughly 43 exclusive brands developed and marketed under grocery chains' own banners worldwide. Recurring, high-volume, lower-brand-equity work that funds the owned-brand ambition. Most candidates miss this entirely.</li>
+  <li><strong>Contract production &amp; sourcing</strong> — no owned vineyards; they source from 14 countries, handle procurement, winemaking partnerships, supply chain, logistics. Over 40% of wine is imported.</li>
+</ul>
+<div class="card"><strong>Interview angle:</strong> When asked "why WX?", the sharp answer names the dual engine — owned brands for growth and equity, exclusive brands for cash flow and distribution muscle. Mentioning the exclusive-brand model signals you've done real homework on how the P&amp;L actually works.</div>
+
+<h2 id="funding">2. Ownership &amp; Funding History</h2>
+<table>
+  <tr><th>When</th><th>What</th><th>Who</th><th>Notes</th></tr>
+  <tr><td>1999</td><td>Founded as Winery Exchange</td><td>Peter Byck + partners</td><td>Started as B2B e-comm portal; pivoted after dot-com bust to exclusive brand production</td></tr>
+  <tr><td>Apr 2000</td><td>Series A — $9M @ $36M post</td><td>Venrock, 3i Group, VTraction, Frederick Warren</td><td>Early VC round</td></tr>
+  <tr><td>Oct 2007</td><td>Growth equity — $5M</td><td>D.E. Shaw Group</td><td></td></tr>
+  <tr><td>2017–2021</td><td>Roll-up acquisitions</td><td>WX itself</td><td>Bread &amp; Butter (2017), Jelly Jar (2017), Sunday Funday (2018), Niven Family Wine Estates (2020), Boxt investment (2021)</td></tr>
+  <tr><td>Jul 30, 2021</td><td>Majority stake sale</td><td>Terold (Bemberg Family Group / Grupo Peñaflor)</td><td>Terms undisclosed. Terold took 4 board seats. Peter Byck stepped down end of 2022; <strong>Oliver Colvin</strong> (ex-SVB counsel) became CEO Jan 2023.</td></tr>
+  <tr><td>Total</td><td>~$24–31M disclosed equity</td><td></td><td>Plus the 2021 majority buyout</td></tr>
+</table>
+<div class="card"><strong>Key facts:</strong> WX is <em>not</em> planning an IPO or new equity raise as far as public info shows. It's a private, majority-owned subsidiary of an Argentine family group. The Bembergs own Grupo Peñaflor, Argentina's largest wine exporter (Trapiche). The deal was geographic: Peñaflor gets US distribution muscle and a beachhead in the world's biggest wine market; WX gets patient capital and South American sourcing depth. This is also why the Trapiche Brand Manager role exists alongside Bread &amp; Butter.</div>
+<div class="card"><strong>Equity question to have ready:</strong> Publicly, no signals of selling more equity or taking on debt. But the smart move is to ask <em>them</em> — "With Bemberg backing, is growth still acquisition-led, or shifting toward organic DTC and international?" That question shows you think like an owner, which is literally one of their stated values ("Think like a business owner").</div>
+
+<h2 id="industry">3. Industry-Wide Problems (as of late 2026)</h2>
+<h3>A. Three straight years of negative US wine sales</h3>
+<p>After three decades of growth, US wine volumes have declined for three consecutive years. Consumers drink less, trade down, or shift to spirits, RTDs, and non-alc. Grape growers are undercut by cheap imported bulk wine.</p>
+<h3>B. The US–Canada trade war — the single biggest shock</h3>
+<ul>
+  <li>March 2025: US tariffs on Canadian goods; Canadian provinces pulled American alcohol from shelves.</li>
+  <li>August 2026: US raised tariffs to 50% on ~$20B of Canadian goods including alcohol.</li>
+  <li>Sept 29, 2026: US banned imports of certain Canadian alcoholic beverages outright.</li>
+  <li>Result: US wine exports to Canada fell ~78–84% (from ~$460M to ~$103M). The Wine Institute called it "the most severe single-year export disruption in the history of the US wine trade." Australian wine filled the gap (+12%).</li>
+</ul>
+<h3>C. European tariff pressure</h3>
+<p>French wine/spirits exports to the US fell 21% in 2025. Proposed US tariffs on European wine as high as 200% were floated; a 15% EU wine tariff was projected to cost the US sector $25B+. Over 40% of WX's wine is imported — this hits cost of goods directly.</p>
+<h3>D. Structural shifts</h3>
+<ul>
+  <li>Premiumization at the top, value-seeking at the bottom — the middle is squeezed.</li>
+  <li>Gen Z drinking less and later; new-to-world and low/no-alc are where incremental growth lives.</li>
+  <li>Three-tier friction: consolidating distributors, retailers demanding more for shelf space, rising slotting and promo costs.</li>
+  <li>DTC is expensive to build and hard to scale profitably against Amazon and grocery e-comm.</li>
+</ul>
+
+<h2 id="company">4. WX-Specific Problems</h2>
+<div class="card"><strong>1. Leadership transition risk.</strong> Founder Peter Byck (23 years) handed to Oliver Colvin in 2023. Colvin is an operator/lawyer, not a brand marketer. Glassdoor sits at 2.0/5 with 20% recommend — nepotism, upper-management disconnect, no 401K match, unrealistic expectations. One review: "They say a company that claims to be 'family' is the most toxic." Know this going in — not to trash them, but to ask smart questions about who really owns brand P&amp;L.</div>
+<div class="card"><strong>2. Tariff exposure on imports.</strong> 40%+ imported wine means European and (formerly) Canadian sourcing costs are volatile. The New-to-World incubation model depends on cheap, flexible sourcing — tariffs compress that margin.</div>
+<div class="card"><strong>3. Bread &amp; Butter concentration.</strong> One brand doing the heavy lifting for growth and equity. If Gen Z tastes shift again, the portfolio's center of gravity wobbles. "Not overthinking it" is a strength (authenticity) and a risk (no deep moat beyond vibe).</div>
+<div class="card"><strong>4. Exclusive-brand treadmill.</strong> Retailer-exclusive programs need constant innovation and retailer-by-retailer relationship management. If a major chain consolidates or renegotiates, volume can evaporate fast.</div>
+<div class="card"><strong>5. DTC immaturity.</strong> A 2018 review called WX "relatively new to the DTC space" with processes still being built. Five-plus years later it's still likely a work in progress — opportunity or sinkhole depending on who you ask.</div>
+<div class="card"><strong>6. Culture vs. pace tension.</strong> They brand themselves "fast pace of an entrepreneurial start-up" and won North Bay Business Journal's Best Places to Work six years running (2021–2026) — but Reddit wine-brand-manager consensus and Glassdoor both point to 50+ hour weeks, 20+ simultaneous initiatives, and deadlines that ignore personal time. Probe which version is real for the brand team specifically.</div>
+
+<h2 id="solutions">5. Solutions Worth Raising (even if not fully baked)</h2>
+<div class="card"><strong>Tariff-resilient sourcing architecture.</strong> Propose a formal "source-shift playbook": pre-negotiated alternate suppliers in unaffected regions (more South American volume via the Peñaflor relationship, or domestic CA/OR/WA), plus dynamic cost modeling that reprices SKUs within 48 hours of a tariff change. Protects margin without breaking brand consistency.</div>
+<div class="card"><strong>Bread &amp; Butter "second act" segmentation.</strong> Split into occasion-based sub-lines (lighter/lower-ABV or canned for daytime social; slightly elevated tier for dinner) to widen the funnel while keeping core "no-fuss" equity. Risk: diluting the simple story. Upside: capturing the value-seeking half of the same demographic.</div>
+<div class="card"><strong>Exclusive-brand data moat.</strong> WX sits on retailer scan and promo data across dozens of chains. Propose a lightweight insights product telling retail partners which exclusive SKUs work before the chain's own dashboards do. Turns a service business into a strategic one.</div>
+<div class="card"><strong>DTC as a testing lab, not a profit center.</strong> Use DTC and owned digital media to A/B test new-to-world concepts, packaging, and messaging at low cost before committing to three-tier distribution. Make the New-to-World incubation loop explicit and measurable.</div>
+<div class="card"><strong>Non-alc / low-alc adjacency.</strong> The industry's incremental growth is here. WX's "not overthinking it" DNA could extend to a simple, well-priced low/zero-ABV line borrowing Bread &amp; Butter's visual language. Low risk to test via DTC first.</div>
+
+<h2 id="quiz">6. Practice Quiz — Mixed Formats</h2>
+<p style="color:var(--muted);font-size:.9rem;margin-bottom:4px">Answer each one. Wrong answers unlock a dropdown explaining why and what to remember. Your score tracks at the top.</p>
+
+<div class="qcard" data-q="1">
+  <div class="qnum">Question 1 · Multiple choice</div>
+  <div class="qtext">WX Brands' revenue rests on three engines. Which one is the "structural backbone" that most interview candidates miss entirely?</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="q1" value="a"> Owned national brands like Bread &amp; Butter</label>
+    <label class="opt"><input type="radio" name="q1" value="b"> Exclusive / private-label brands developed for retail chains</label>
+    <label class="opt"><input type="radio" name="q1" value="c"> Contract winemaking and sourcing services</label>
+    <label class="opt"><input type="radio" name="q1" value="d"> Tasting room and direct-to-consumer sales</label>
+  </div>
+  <div class="feedback" id="fb1"></div>
+  <details class="why" id="why1"><summary>Why that answer matters</summary><div class="body">The exclusive-brand model (roughly 43 brands under grocery chains' own banners) is recurring, high-volume revenue that funds the owned-brand ambition. Candidates who only name Bread &amp; Butter signal they haven't studied the P&amp;L. Mentioning it unprompted is one of the fastest ways to stand out.</div></details>
+</div>
+
+<div class="qcard" data-q="2">
+  <div class="qnum">Question 2 · Multiple choice</div>
+  <div class="qtext">In July 2021, WX sold a majority stake to which group?</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="q2" value="a"> E. &amp; J. Gallo Winery</label>
+    <label class="opt"><input type="radio" name="q2" value="b"> Terold — the Bemberg Family Group / Grupo Peñaflor</label>
+    <label class="opt"><input type="radio" name="q2" value="c"> Treasury Wine Estates</label>
+    <label class="opt"><input type="radio" name="q2" value="d"> Constellation Brands</label>
+  </div>
+  <div class="feedback" id="fb2"></div>
+  <details class="why" id="why2"><summary>Why that answer matters</summary><div class="body">The Bembergs own Grupo Peñaflor, Argentina's largest wine exporter (Trapiche). The deal was geographic: Peñaflor gets US distribution muscle and a beachhead in the world's biggest wine market; WX gets patient capital and South American sourcing depth. This is also why the Trapiche Brand Manager role exists alongside Bread &amp; Butter.</div></details>
+</div>
+
+<div class="qcard" data-q="3">
+  <div class="qnum">Question 3 · Select all that apply</div>
+  <div class="qtext">Which of the following are real, documented pressures on the US wine industry right now? (Select every correct one.)</div>
+  <div class="opts">
+    <label class="opt"><input type="checkbox" name="q3" value="a"> Three consecutive years of declining US wine volumes</label>
+    <label class="opt"><input type="checkbox" name="q3" value="b"> A US ban on certain Canadian alcoholic beverage imports (Sept 2026)</label>
+    <label class="opt"><input type="checkbox" name="q3" value="c"> Proposed US tariffs on European wine as high as 200%</label>
+    <label class="opt"><input type="checkbox" name="q3" value="d"> A nationwide shortage of California grapes forcing all producers to import</label>
+  </div>
+  <div class="feedback" id="fb3"></div>
+  <details class="why" id="why3"><summary>Why that answer matters</summary><div class="body">A, B, and C are all real. D is not — the grape shortage narrative is about growers being undercut by cheap imported bulk wine, not a forced import mandate. In an interview, lead with the three-year decline and tariff shock, then pivot to what a brand can still control: occasion expansion, retail execution, community.</div></details>
+</div>
+
+<div class="qcard" data-q="4">
+  <div class="qnum">Question 4 · True or false</div>
+  <div class="qtext">WX owns its own vineyards and winemaking facilities.</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="q4" value="a"> True — they control the full supply chain from vineyard to bottle</label>
+    <label class="opt"><input type="radio" name="q4" value="b"> False — they source from 14 countries and don't own vineyards or wineries</label>
+  </div>
+  <div class="feedback" id="fb4"></div>
+  <details class="why" id="why4"><summary>Why that answer matters</summary><div class="body">False. WX is an asset-light brand and sourcing company. Over 40% of their wine is imported. This matters because it means tariff and currency exposure is structural, not incidental — which is exactly why a "source-shift playbook" solution lands so well in an interview.</div></details>
+</div>
+
+<div class="qcard" data-q="5">
+  <div class="qnum">Question 5 · Scenario</div>
+  <div class="qtext">You're in a final-round interview and the VP asks: "With Bemberg backing, is our growth plan still acquisition-led, or are we shifting toward organic DTC and international?" You don't know the internal answer. What's the best move?</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="q5" value="a"> Guess confidently — interviewers respect decisiveness</label>
+    <label class="opt"><input type="radio" name="q5" value="b"> Say "I'm not sure, but here's how I'd think about it" and lay out the trade-offs between acquisition and organic growth</label>
+    <label class="opt"><input type="radio" name="q5" value="c"> Pivot back to your resume and avoid the question</label>
+    <label class="opt"><input type="radio" name="q5" value="d"> Ask them to define "acquisition-led" first so you can tailor your answer</label>
+  </div>
+  <div class="feedback" id="fb5"></div>
+  <details class="why" id="why5"><summary>Why that answer matters</summary><div class="body">B. Honest uncertainty plus structured thinking beats a confident guess every time — especially when the question is genuinely open (public info doesn't say). Framing the trade-offs (speed and distribution vs. brand control and margin) shows you think like an owner, which is one of WX's stated values. D is a stalling tactic that reads as evasive.</div></details>
+</div>
+
+<div class="qcard" data-q="6">
+  <div class="qnum">Question 6 · Multiple choice</div>
+  <div class="qtext">A Treasury Wine Estates candidate lost the final round despite months of easy interviews. What did they fumble?</div>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="q6" value="a"> Salary expectations</label>
+    <label class="opt"><input type="radio" name="q6" value="b"> Specific behavioral prompts — they wanted sharp STAR stories</label>
+    <label class="opt"><input type="radio" name="q6" value="c"> Wine knowledge trivia</label>
+    <label class="opt"><input type="radio" name="q6" value="d"> The case presentation</label>
+  </div>
+  <div class="feedback" id="fb6"></div>
+  <details class="why" id="why6"><summary>Why that answer matters</summary><div class="body">B. The candidate's own post-mortem: "I struggled with the behavioral questions, they asked really specific situations." Wine companies run on scan and depletion data and expect concrete stories with numbers — depletion lift, share gain, promo ROI. Vague passion talk without proof is the #1 killer across beverage interviews.</div></details>
+</div>
+
+<button class="btn" id="checkBtn" onclick="checkAll()">Check my answers</button>
+<button class="btn ghost" onclick="resetQuiz()" style="margin-left:8px">Reset quiz</button>
+
+<h2 id="resources">7. Real Interview Stories &amp; Resources</h2>
+<p style="color:var(--muted);font-size:.9rem">Links to where actual candidates posted what worked and what didn't. Verify anything you'd quote as fact — these are anonymous self-reports.</p>
+<div class="res-grid">
+  <a class="res" href="https://www.glassdoor.com/Interview/Treasury-Wine-Estates-Associate-Brand-Manager-Interview-Questions-EI_IE407804.0,21_KO22,45.htm" target="_blank" rel="noreferrer">
+    <div class="src">Glassdoor</div>
+    <div class="title">Treasury Wine Estates — Associate Brand Manager</div>
+    <div class="desc">4-month panel process in Napa. Easy early rounds; final-round loss traced to fumbling specific behavioral prompts. Recruiter communication praised.</div>
+  </a>
+  <a class="res" href="https://www.glassdoor.com/Interview/The-Wine-Group-Interview-Questions-E951340.htm" target="_blank" rel="noreferrer">
+    <div class="src">Glassdoor</div>
+    <div class="title">The Wine Group — Livermore</div>
+    <div class="desc">HR screen → hiring manager → cross-functional leaders → VP. Mix of behavioral and case, including "tell me about a time you used data for a strategy" and "which food-and-bev company is doing marketing well and why."</div>
+  </a>
+  <a class="res" href="https://www.glassdoor.com/Interview/Deutsch-Family-Wine-and-Spirits-Associate-Brand-Manager-Interview-Questions-EI_IE833085.0,31_KO32,55.htm" target="_blank" rel="noreferrer">
+    <div class="src">Glassdoor</div>
+    <div class="title">Deutsch Family Wine &amp; Spirits</div>
+    <div class="desc">Rigorous multi-round process with STAR-method behavioral questions ("tell me about a time you failed"). One candidate spent 15 hours across 11 employees then got ghosted after a hiring freeze — a cautionary tale about process risk.</div>
+  </a>
+  <a class="res" href="https://www.glassdoor.com/Interview/Mo%C3%ABt-Hennessy-Assistant-Brand-Manager-Interview-Questions-EI_IE40175.0,13_KO14,37.htm" target="_blank" rel="noreferrer">
+    <div class="src">Glassdoor</div>
+    <div class="title">Moët Hennessy — Assistant Brand Manager</div>
+    <div class="desc">Estimates questions ("how many bottles sell in a month in Italy?"), motivation, and "why wines &amp; spirits?" — shows how far back the funnel some houses go.</div>
+  </a>
+  <a class="res" href="https://www.reddit.com/r/marketing/comments/1ba11e7/brand_management_work_life_balance/" target="_blank" rel="noreferrer">
+    <div class="src">Reddit · r/marketing</div>
+    <div class="title">Brand Management &amp; Work-Life Balance</div>
+    <div class="desc">Two wine/spirits supplier-side brand managers describing 50+ hour weeks, 20–30 simultaneous initiatives, and unrealistic deadlines as the norm past associate level. Essential reading before you accept.</div>
+  </a>
+  <a class="res" href="https://skills.interviewgemini.com/interviews/interview-questions-for-wine-marketing-and-sales/" target="_blank" rel="noreferrer">
+    <div class="src">InterviewGemini</div>
+    <div class="title">Wine Marketing &amp; Sales Interview Questions</div>
+    <div class="desc">Sample answers for campaign experience, KPI tracking, and "how would you develop a marketing plan for a new wine brand?" — useful templates, not real experiences.</div>
+  </a>
+  <a class="res" href="https://www.cvowl.com/blog/wine-manager-interview-questions-answers" target="_blank" rel="noreferrer">
+    <div class="src">CVOwl</div>
+    <div class="title">Top 20 Wine Manager Interview Q&amp;As (2026)</div>
+    <div class="desc">General wine-manager questions covering supplier relationships, cellar management, and difficult-situation stories. More retail/restaurant flavored than brand-side, but the relationship-building answers transfer.</div>
+  </a>
+  <a class="res" href="https://www.glassdoor.com/Interview/wine-manager-interview-questions-SRCH_KO0,12.htm" target="_blank" rel="noreferrer">
+    <div class="src">Glassdoor</div>
+    <div class="title">Wine Manager — General Pool</div>
+    <div class="desc">24 shared questions across H-E-B, Whole Foods, Hy-Vee, Bright Cellars, Constellation, Hahn. Includes "how would I source a Greek red for private label production?" — close to WX's exclusive-brand reality.</div>
+  </a>
+</div>
+
+<div class="card" style="margin-top:24px"><strong>Bottom line:</strong> Walk in fluent on (a) the owned-vs-exclusive revenue split, (b) Bread &amp; Butter's demographic lock, (c) tariff/import exposure, (d) the Bemberg/Peñaflor relationship as both opportunity and constraint, and (e) one or two unpolished-but-smart solution ideas. That combination puts you ahead of most candidates, who will only have read the job description.</div>
+
+<footer>
+  Compiled for personal interview prep. Figures drawn from public sources: Impact Databank via Shanken News Daily, Wine Business Monthly, Press Democrat, O'Donovan/O'Melveny deal announcements, PitchBook/CB Insights funding data, Wine Institute export figures, North Bay Business Journal, Glassdoor, Reddit. Some numbers are estimates or from 2020–2021 reporting — verify anything you'd quote as fact. Not affiliated with WX Brands. UI modeled on card-based study platforms (Brainscape / Great Frontend style).
+</footer>
+
+</div>
+<script>
+const TOTAL=6;
+let answered=new Set();
+function updateProgress(){
+  const pct=Math.round(answered.size/TOTAL*100);
+  document.getElementById('bar').style.width=pct+'%';
+  document.getElementById('pct').textContent=answered.size+' of '+TOTAL+' answered';
+}
+function markAnswered(q){answered.add(q);updateProgress()}
+function setFeedback(id,cls,text){
+  const el=document.getElementById(id);
+  el.className='feedback show '+cls;
+  el.textContent=text;
+}
+document.querySelectorAll('.qcard').forEach(card=>{
+  card.querySelectorAll('input').forEach(inp=>{
+    inp.addEventListener('change',()=>{
+      const q=card.dataset.q;
+      if(!answered.has(q))markAnswered(q);
+      if(inp.type==='radio'){
+        const name=inp.name;
+        card.querySelectorAll('input[name="'+name+'"]:checked').forEach(c=>c.closest('.opt').classList.remove('correct','wrong'));
+        const chosen=card.querySelector('input[name="'+name+'"]:checked);
+        if(!chosen)return;
+        const ok=(q==='1'&&chosen.value==='b')||(q==='2'&&chosen.value==='b')||(q==='4'&&chosen.value==='b')||(q==='5'&&chosen.value==='b')||(q==='6'&&chosen.value==='b);
+        chosen.closest('.opt').classList.add(ok?'correct':'wrong);
+        if(ok)setFeedback('fb'+q,'good','Correct.');
+        else{setFeedback('fb'+q,'bad','Not quite — see the dropdown below for why.');document.getElementById('why'+q).open=true;}
+      }
+    });
+  });
+});
+function checkAll(){
+  const q3=document.querySelectorAll('input[name="q3"]:checked);
+  const vals=[...q3].map(i=>i.value).sort().join('');
+  const ok3=vals==='abc';
+  document.querySelectorAll('input[name="q3"]:checked').forEach(c=>c.closest('.opt').classList.add(ok3?'correct':'wrong'));
+  if(!answered.has('3'))markAnswered('3);
+  setFeedback('fb3',ok3?'good':'bad',ok3?'Correct — A, B, and C.':'Not quite. A, B, and C are all real; D (a nationwide grape-import mandate) is not. Open the dropdown for the full breakdown.');
+  if(!ok3)document.getElementById('why3').open=true;
+  for(let q=1;q<=6;q++){
+    if(q===3)continue;
+    if(!document.querySelector('input[name="q'+q+'"]:checked')){
+      setFeedback('fb'+q,'bad','No answer selected yet.');
+    }
+  }
+  updateProgress();
+  window.scrollTo({top:document.getElementById('bar').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+}
+function resetQuiz(){
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong'));
+  document.querySelectorAll('.feedback').forEach(f=>{f.className='feedback';f.textContent='';});
+  document.querySelectorAll('.why').forEach(w=>w.open=false);
+  document.querySelectorAll('input').forEach(i=>i.checked=false);
+  answered.clear();updateProgress();
+}
+updateProgress();
+</script>
+</body>
+</html>
